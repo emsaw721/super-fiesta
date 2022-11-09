@@ -32,7 +32,23 @@ Once it is confirmed that the database is created and in use, the user will seed
 
  > % node seeds/index.js. 
 
+After the database is seeded, the user can exit mysql using the command: 
 
+ > % quit
+
+The user can then interact with the application through the API routes to GET, POST, PUT, and DELETE items from categories, products, and tags. This is possible using <a href="https://insomnia.rest/download">insomnia</a> or navigating to the browser and typing the following into the searchbar. Both insomnia and the brower use the same syntax:
+
+ > localhost:3001/api/
+
+followed by the path that the user wishes to test (products, tags, or categories). An example search would look like the following:
+
+ > localhost:3001/api/categories
+
+to get one category by id (example case is id: 1):
+
+ > localhost:3001/api/categories/1
+
+Once the user is done interacting with the database, all changes will persist. 
 
 
 ## Future Iterations 
