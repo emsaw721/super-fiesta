@@ -7,14 +7,21 @@ router.get('/', (req, res) => {
     // find all categories
   // be sure to include its associated Products
   Category.findAll({
-    attributes: ['category_id', 'category_name'],
+   
     include: [
       {
-        model: Product,
-        attributes: ['product_id', 'product_name']
+        model: Product
+       
       }
     ]
-  }).then()
+  }).then(dbCategoriesData => {
+    console.log(dbCategoriesData) 
+    if(!dbCategoriesData) {
+      res.status(404).json({messsage: 'No categories found!'}) 
+      return; 
+    }
+    res.json(dbCategoriesData)
+  }).catch((err) => res.json(err)) 
 });
 
 router.get('/:id', (req, res) => {
@@ -22,15 +29,21 @@ router.get('/:id', (req, res) => {
   // be sure to include its associated Products
   Category.findOne({
     where: {
-      id: req.params.category_id
+      id: req.params.Category.id
     },
-    attributes: ['category_id', 'category_name'],
+    attributes: ['id', 'category_name'],
     include: [{
       model: Product,
-      attributes: ['product_id', 'product_name']
+      attributes: ['id', 'product_name']
     }
     ]
-  }).then()
+  }).then(dbOneCategory => {
+    if(!dbOneCategory){
+      res.status(404).json({message: 'Category not found!'})
+      return; 
+    }
+    res.json(dbOneCategory)
+  }).catch((err) => res.json(err))
 });
 
 router.post('/', (req, res) => {
@@ -38,22 +51,26 @@ router.post('/', (req, res) => {
   Category.create({
     category_name: req.body.category_name,
 
-  }).then()
+  }).then(dbCreatedCategory => {
+    res.json(dbCreatedCategory)
+  }).catch((err) => {
+    res.json(err)
+  })
 });
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
   Category.update(
     {
-      id: req.params.category_id,
+      id: req.params.Category_id,
       name: req.params.category_name
   },
   {
     where: {
-      id: req.params.category_id
+      id: req.params.Category_id
     }
-  }).then((updatedCategory) => {
-    res.json(updatedCategory)
+  }).then(dbUpdatedCategory => {
+    res.json(dbUpdatedCategory)
   }).catch((err) => res.json(err))
 });
 
@@ -61,10 +78,14 @@ router.delete('/:id', (req, res) => {
   // delete a category by its `id` value
   Category.destroy({
     where: {
-      id: req.params.category_id
+      id: req.params.Category_id
     }
-  }).then((deletedCategory) => {
-    res.json(deletedCategory)
+  }).then(dbDeletedCategory => {
+    if(!dbDeletedCategory){
+      res.status(404).json({message: 'No category with this id found!'})
+      return; 
+    }
+    res.json(dbDeletedCategory)
   }).catch((err) => res.json(err))
 });
 

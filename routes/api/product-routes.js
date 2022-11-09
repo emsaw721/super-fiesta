@@ -8,28 +8,51 @@ router.get('/', (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
   Product.findAll({
-    attributes: ['product_id', 'product_name', 'price', 'product_stock', 'category_id', 'category'],
+    attributes: ['id', 'product_name', 'price', 'product_stock'],
     include: [
       {
         model: Category,
-        attributes: ['category_id', 'category_name']
+        attributes: ['id', 'category_name']
       },
       {
-        model: Tag, 
+        model: Tag,
         attributes: ['id', 'tag_name']
       }
     ]
-  }).then()
+  }).then((allProducts) => {
+    res.json(allProducts)
+  }).catch((err) => {
+    res.json(err)
+  })
 });
 
 // get one product
 router.get('/:id', (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
+  Product.findOne({
+    where: {
+      id: req.params.id
+    },
+    attributes: ['id', 'product_name'],
+    include: [
+      {
+        model: Category,
+        attributes: ['id', 'category_name']
+      },
+      {
+        model: Tag,
+        attributes: ['id', 'tag_name']
+      }
+    ]
+  }).then((oneProduct) => {
+    res.json(oneProduct)
+  }).catch((err) => res.json(err))
 });
 
 // create new product
 router.post('/', (req, res) => {
+
   /* req.body should look like this...
     {
       product_name: "Basketball",
@@ -106,7 +129,7 @@ router.delete('/:id', (req, res) => {
   // delete one product by its `id` value
   Product.destroy({
     where: {
-      id: req.params.product_id
+      id: req.params.id
     }
   }).then((deletedProduct) => {
     res.json(deletedProduct)
