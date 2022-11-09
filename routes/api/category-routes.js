@@ -4,24 +4,24 @@ const { Category, Product } = require('../../models');
 // The `/api/categories` endpoint
 
 router.get('/', (req, res) => {
-    // find all categories
+  // find all categories
   // be sure to include its associated Products
   Category.findAll({
-   
+
     include: [
       {
         model: Product
-       
+
       }
     ]
   }).then(allCategories => {
-    console.log(allCategories) 
-    if(!allCategories) {
-      res.status(404).json({messsage: 'No categories found!'}) 
-      return; 
+    console.log(allCategories)
+    if (!allCategories) {
+      res.status(404).json({ messsage: 'No categories found!' })
+      return;
     }
     res.json(allCategories)
-  }).catch((err) => res.json(err)) 
+  }).catch((err) => res.json(err))
 });
 
 router.get('/:id', (req, res) => {
@@ -33,13 +33,13 @@ router.get('/:id', (req, res) => {
     },
     include: [
       {
-      model: Product,
-    }
+        model: Product,
+      }
     ]
   }).then(oneCategory => {
-    if(!oneCategory){
-      res.status(404).json({message: 'Category not found!'})
-      return; 
+    if (!oneCategory) {
+      res.status(404).json({ message: 'Category not found!' })
+      return;
     }
     res.json(oneCategory)
   }).catch((err) => res.json(err))
@@ -63,14 +63,14 @@ router.put('/:id', (req, res) => {
     {
       id: req.params.id,
       name: req.params.category_name
-  },
-  {
-    where: {
-      id: req.params.id
-    }
-  }).then(updatedCategory => {
-    res.json(updatedCategory)
-  }).catch((err) => res.json(err))
+    },
+    {
+      where: {
+        id: req.params.id
+      }
+    }).then(updatedCategory => {
+      res.json(updatedCategory)
+    }).catch((err) => res.json(err))
 });
 
 router.delete('/:id', (req, res) => {
@@ -80,9 +80,9 @@ router.delete('/:id', (req, res) => {
       id: req.params.id
     }
   }).then(deletedCategory => {
-    if(!deletedCategory){
-      res.status(404).json({message: 'No category with this id found!'})
-      return; 
+    if (!deletedCategory) {
+      res.status(404).json({ message: 'No category with this id found!' })
+      return;
     }
     res.json(deletedCategory)
   }).catch((err) => res.json(err))

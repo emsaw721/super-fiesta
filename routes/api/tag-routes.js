@@ -27,11 +27,9 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id
     },
-    attributes: ['id', 'tag_name'],
     include: [
       {
-        model: Product,
-        attributes: ['id', 'product_name']
+        model: Product
       }
     ]
   }).then((oneTag) => {
@@ -75,6 +73,10 @@ router.delete('/:id', (req, res) => {
       id: req.params.id
     }
   }).then((deletedTag) => {
+    if(!deletedTag){
+      res.status(404).json({message: 'No tag with this id found!'})
+      return; 
+    }
     res.json(deletedTag)
   }).catch((err) => res.json(err))
 });
