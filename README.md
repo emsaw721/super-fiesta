@@ -16,14 +16,23 @@ In order for this application to work, the user will need to install the <a href
 ## Usage
 First, the user will open the terminal and navigate to the application. <br>
 Then, the user will run mysql2 using either the command: 
+
  > % mysql -u root
+
 or
+
 > % mysql -u root -p 
+
 if there is no set password or a set password, respectively. This will create the database. <br>
 Once it is confirmed that the database is created and in use, the user will seed the database using the command:
+
  > % npm run seed
+
  or 
+
  > % node seeds/index.js. 
+
+
 
 
 ## Future Iterations 
