@@ -16,5 +16,7 @@ In order for this application to work, the user will need to install the <a href
 ## Usage
 
 ## Future Iterations 
+Future versions of this application will include front end in order to make it a functioning full stack application. 
 
 ## License 
+[MIT](https://choosealicense.com/licenses/mit/) 
