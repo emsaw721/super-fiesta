@@ -50,7 +50,7 @@ router.get('/:id', (req, res) => {
       res.status(404).json({message: 'Product not found!'})
     }
     res.json(oneProduct)
-  }).catch((err) => {res.json(err)})
+  }).catch((err) => res.json(err))
 });
 
 // create new product
@@ -89,7 +89,7 @@ router.post('/', (req, res) => {
 // update product
 router.put('/:id', (req, res) => {
   // update product data
-  Product.update(req.body, {
+  Product.update({
     where: {
       id: req.params.id,
     },
@@ -140,7 +140,7 @@ router.delete('/:id', (req, res) => {
       return;
     }
     res.json(deletedProduct)
-  }).catch((err) => {res.json(err)})
+  }).catch((err) => res.json(err))
 });
 
 module.exports = router;

@@ -37,7 +37,7 @@ router.get('/:id', (req, res) => {
       res.status(404).json({message: 'Tag not found!'})
     }
     res.json(oneTag)
-  }).catch((err) => {res.json(err)})
+  }).catch((err) => res.json(err))
 });
 
 router.post('/', (req, res) => {
@@ -66,7 +66,7 @@ router.put('/:id', (req, res) => {
       },
     }).then((updatedTag) => {
       res.json(updatedTag)
-    }).catch((err) => {res.json(err)})
+    }).catch((err) => res.json(err))
 });
 
 router.delete('/:id', (req, res) => {
@@ -81,7 +81,7 @@ router.delete('/:id', (req, res) => {
       return; 
     }
     res.json(deletedTag)
-  }).catch((err) => {res.json(err)})
+  }).catch((err) => res.json(err))
 });
 
 module.exports = router;

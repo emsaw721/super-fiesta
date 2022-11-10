@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
       return;
     }
     res.json(allCategories)
-  }).catch((err) => {res.json(err)})
+  }).catch((err) => res.json(err))
 });
 
 router.get('/:id', (req, res) => {
@@ -42,14 +42,13 @@ router.get('/:id', (req, res) => {
       return;
     }
     res.json(oneCategory)
-  }).catch((err) => {res.json(err)})
+  }).catch((err) => res.json(err))
 });
 
 router.post('/', (req, res) => {
   // create a new category
   Category.create({
     category_name: req.body.category_name,
-
   }).then(createdCategory => {
     res.json(createdCategory)
   }).catch((err) => {
@@ -61,16 +60,16 @@ router.put('/:id', (req, res) => {
   // update a category by its `id` value
   Category.update(
     {
-      id: req.params.id,
+      id: req.params.id, 
       name: req.params.category_name
     },
     {
       where: {
         id: req.params.id
-      },
+      }
     }).then(updatedCategory => {
       res.json(updatedCategory)
-    }).catch((err) => {res.json(err)})
+    }).catch((err) => res.json(err))
 });
 
 router.delete('/:id', (req, res) => {
@@ -85,7 +84,7 @@ router.delete('/:id', (req, res) => {
       return;
     }
     res.json(deletedCategory)
-  }).catch((err) => {res.json(err)})
+  }).catch((err) => res.json(err))
 });
 
 module.exports = router;
