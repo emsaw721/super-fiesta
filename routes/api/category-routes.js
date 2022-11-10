@@ -67,7 +67,7 @@ router.put('/:id', (req, res) => {
     {
       where: {
         id: req.params.id
-      }
+      },
     }).then(updatedCategory => {
       res.json(updatedCategory)
     }).catch((err) => res.json(err))

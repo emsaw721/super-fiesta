@@ -63,7 +63,7 @@ router.put('/:id', (req, res) => {
     {
       where: {
         id: req.params.id
-      }
+      },
     }).then((updatedTag) => {
       res.json(updatedTag)
     }).catch((err) => res.json(err))
