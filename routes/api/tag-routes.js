@@ -33,6 +33,9 @@ router.get('/:id', (req, res) => {
       }
     ]
   }).then((oneTag) => {
+    if(!oneTag) {
+      res.status(404).json({message: 'Tag not found!'})
+    }
     res.json(oneTag)
   }).catch((err) => res.json(err))
 });

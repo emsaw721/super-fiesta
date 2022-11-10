@@ -49,6 +49,7 @@ router.get('/:id', (req, res) => {
     if(!oneProduct) {
       res.status(404).json({message: 'Product not found!'})
     }
+    res.json(oneProduct)
   }).catch((err) => res.json(err))
 });
 
