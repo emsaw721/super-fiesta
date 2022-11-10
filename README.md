@@ -16,6 +16,7 @@ In order for this application to work, the user will need to install the <a href
 
 ## Usage
 Video Link to Walkthrough: https://drive.google.com/file/d/14ap5ckesZWNXjFP8Elue6jsXPklQAu1Y/view
+<br>
 First, the user will open the terminal and navigate to the application. <br>
 Then, the user will run mysql2 using either the command: 
 
