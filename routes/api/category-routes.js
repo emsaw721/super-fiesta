@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
       return;
     }
     res.json(allCategories)
-  }).catch((err) => res.json(err))
+  }).catch((err) => {res.json(err)})
 });
 
 router.get('/:id', (req, res) => {
@@ -42,7 +42,7 @@ router.get('/:id', (req, res) => {
       return;
     }
     res.json(oneCategory)
-  }).catch((err) => res.json(err))
+  }).catch((err) => {res.json(err)})
 });
 
 router.post('/', (req, res) => {
@@ -70,7 +70,7 @@ router.put('/:id', (req, res) => {
       },
     }).then(updatedCategory => {
       res.json(updatedCategory)
-    }).catch((err) => res.json(err))
+    }).catch((err) => {res.json(err)})
 });
 
 router.delete('/:id', (req, res) => {
@@ -85,7 +85,7 @@ router.delete('/:id', (req, res) => {
       return;
     }
     res.json(deletedCategory)
-  }).catch((err) => res.json(err))
+  }).catch((err) => {res.json(err)})
 });
 
 module.exports = router;

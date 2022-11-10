@@ -50,7 +50,7 @@ router.get('/:id', (req, res) => {
       res.status(404).json({message: 'Product not found!'})
     }
     res.json(oneProduct)
-  }).catch((err) => res.json(err))
+  }).catch((err) => {res.json(err)})
 });
 
 // create new product
@@ -140,7 +140,7 @@ router.delete('/:id', (req, res) => {
       return;
     }
     res.json(deletedProduct)
-  }).catch((err) => res.json(err))
+  }).catch((err) => {res.json(err)})
 });
 
 module.exports = router;
