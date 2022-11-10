@@ -46,7 +46,9 @@ router.get('/:id', (req, res) => {
       }
     ]
   }).then((oneProduct) => {
-    res.json(oneProduct)
+    if(!oneProduct) {
+      res.status(404).json({message: 'Product not found!'})
+    }
   }).catch((err) => res.json(err))
 });
 
@@ -64,7 +66,7 @@ router.post('/', (req, res) => {
   Product.create(req.body)
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
-      if (req.body.tagIds.length) {
+      if (req.body.tagIds) {
         const productTagIdArr = req.body.tagIds.map((tag_id) => {
           return {
             product_id: product.id,
@@ -132,6 +134,10 @@ router.delete('/:id', (req, res) => {
       id: req.params.id
     }
   }).then((deletedProduct) => {
+    if(!deletedCategory){
+      res.status(404).json({message:'No product with this id found!'})
+      return;
+    }
     res.json(deletedProduct)
   }).catch((err) => res.json(err))
 });
