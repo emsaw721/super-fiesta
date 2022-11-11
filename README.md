@@ -1,5 +1,5 @@
 # E-Commerce Back End 
-Video Link to Walkthrough: https://drive.google.com/file/d/14ap5ckesZWNXjFP8Elue6jsXPklQAu1Y/view
+Video Link to Walkthrough: https://drive.google.com/file/d/1u0UUY-3VmgvhI8AeSQgPsNRjX1UVocwN/view
 
 ## Description 
 This application serves an e-commerce website's backend. It is used to get information on products, categories, and tags. It also allows the user to update the database by adding new products, cateogries, or tags or deleting any one item in those three cases. 
@@ -15,7 +15,7 @@ This application serves an e-commerce website's backend. It is used to get infor
 In order for this application to work, the user will need to install the <a href="https://www.npmjs.com/package/mysql2">MySQL2</a> and <a href="https://www.npmjs.com/package/sequelize">Sequelize</a> packages to connect the Express.js API to the mysql database. The user will also need to install <a href="https://www.npmjs.com/package/dotenv">dotenv</a> to hide sensitve information like the database password.
 
 ## Usage
-Video Link to Walkthrough: https://drive.google.com/file/d/14ap5ckesZWNXjFP8Elue6jsXPklQAu1Y/view
+Video Link to Walkthrough: https://drive.google.com/file/d/1u0UUY-3VmgvhI8AeSQgPsNRjX1UVocwN/view
 <br>
 First, the user will open the terminal and navigate to the application. <br>
 Then, the user will run mysql2 using either the command: 
