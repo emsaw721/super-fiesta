@@ -43,7 +43,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   // create a new tag
   Tag.create({
-    id: req.body.id,
+    // don't put id becuase will need to keep track if it --> will autoincrement anyway 
     tag_name: req.body.tag_name
 
   }).then(createdTag => {
@@ -57,8 +57,7 @@ router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
   Tag.update(
     {
-      id: req.params.id,
-      name: req.params.tag_name
+      tag_name: req.body.tag_name
     },
     {
       where: {
