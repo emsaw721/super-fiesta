@@ -43,7 +43,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   // create a new tag
   Tag.create({
-    // don't put id becuase will need to keep track if it --> will autoincrement anyway 
+    // don't put id because will need to keep track if it --> will autoincrement anyway 
     tag_name: req.body.tag_name
 
   }).then(createdTag => {
